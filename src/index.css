@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+/* Design tokens — sourced from the validated dataviz reference palette.
+   Values are plain custom properties inside Tailwind's @theme block, so
+   Tailwind emits real CSS variables and utility classes (bg-surface,
+   text-ink, …) resolve them at runtime — letting the dark-mode block
+   below simply override the variables, not the utilities. */
+@theme {
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --color-surface: #f9f9f7;
+  --color-card: #fcfcfb;
+  --color-border: rgba(11, 11, 11, 0.1);
+  --color-ink: #0b0b0b;
+  --color-ink-secondary: #52514e;
+  --color-ink-muted: #898781;
+  --color-gridline: #e1e0d9;
+  --color-baseline: #c3c2b7;
+
+  --color-accent: #2a78d6;
+  --color-accent-strong: #1c5cab;
+
+  --color-good: #0ca30c;
+  --color-warning: #fab219;
+  --color-serious: #ec835a;
+  --color-critical: #d03b3b;
+
+  --color-cat-1: #2a78d6;
+  --color-cat-2: #eb6834;
+  --color-cat-3: #1baf7a;
+  --color-cat-4: #eda100;
+  --color-cat-5: #e87ba4;
+  --color-cat-6: #008300;
+  --color-cat-7: #4a3aa7;
+  --color-cat-8: #e34948;
+}
+
+:root {
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --color-surface: #0d0d0d;
+    --color-card: #1a1a19;
+    --color-border: rgba(255, 255, 255, 0.1);
+    --color-ink: #ffffff;
+    --color-ink-secondary: #c3c2b7;
+    --color-ink-muted: #898781;
+    --color-gridline: #2c2c2a;
+    --color-baseline: #383835;
+
+    --color-accent: #3987e5;
+    --color-accent-strong: #86b6ef;
+
+    --color-good: #0ca30c;
+    --color-warning: #fab219;
+    --color-serious: #ec835a;
+    --color-critical: #d03b3b;
+
+    --color-cat-1: #3987e5;
+    --color-cat-2: #d95926;
+    --color-cat-3: #199e70;
+    --color-cat-4: #c98500;
+    --color-cat-5: #d55181;
+    --color-cat-6: #008300;
+    --color-cat-7: #9085e9;
+    --color-cat-8: #e66767;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-surface: #0d0d0d;
+  --color-card: #1a1a19;
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-ink: #ffffff;
+  --color-ink-secondary: #c3c2b7;
+  --color-ink-muted: #898781;
+  --color-gridline: #2c2c2a;
+  --color-baseline: #383835;
+
+  --color-accent: #3987e5;
+  --color-accent-strong: #86b6ef;
+
+  --color-cat-1: #3987e5;
+  --color-cat-2: #d95926;
+  --color-cat-3: #199e70;
+  --color-cat-4: #c98500;
+  --color-cat-5: #d55181;
+  --color-cat-6: #008300;
+  --color-cat-7: #9085e9;
+  --color-cat-8: #e66767;
+}
+
+* {
+  border-color: var(--color-border);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background-color: var(--color-surface);
+  color: var(--color-ink);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100svh;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-transition {
+  animation: fade-in 0.18s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-transition {
+    animation: none;
+  }
+}
