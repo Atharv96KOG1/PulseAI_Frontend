@@ -4,6 +4,7 @@ import { ThemeToggle } from '@/components/ThemeToggle'
 import { Button } from '@/components/ui/button'
 import { useAnalyze } from '@/hooks/useAnalyze'
 import { AboutPage } from '@/pages/AboutPage'
+import { AskPage } from '@/pages/AskPage'
 import { DashboardPage } from '@/pages/DashboardPage'
 import { ExplorerPage } from '@/pages/ExplorerPage'
 import { HistoryPage } from '@/pages/HistoryPage'
@@ -14,6 +15,7 @@ const PAGE_META: Record<Section, { title: string; description: string }> = {
   new: { title: 'New Analysis', description: 'Upload a CSV or check a single piece of feedback.' },
   dashboard: { title: 'Dashboard', description: 'KPIs, distributions, and the executive summary.' },
   explorer: { title: 'Feedback Explorer', description: 'Search, filter, and inspect every processed ticket.' },
+  ask: { title: 'Ask Feedback', description: 'Ask questions about this batch, answered from the tickets themselves.' },
   history: { title: 'History', description: 'Every past analysis, saved automatically.' },
   about: { title: 'About Loom', description: 'How the pipeline works, end to end.' },
 }
@@ -91,6 +93,7 @@ export function AppShell() {
           {section === 'explorer' && (
             <ExplorerPage state={state} onGoToNewAnalysis={() => setSection('new')} />
           )}
+          {section === 'ask' && <AskPage state={state} onGoToNewAnalysis={() => setSection('new')} />}
           {section === 'history' && (
             <HistoryPage
               onLoadAnalysis={(data) => {

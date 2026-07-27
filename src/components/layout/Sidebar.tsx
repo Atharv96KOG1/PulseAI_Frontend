@@ -1,13 +1,14 @@
-import { History, Info, LayoutDashboard, Table2, UploadCloud, X } from 'lucide-react'
+import { History, Info, LayoutDashboard, MessageCircleQuestion, Table2, UploadCloud, X } from 'lucide-react'
 import { ThemeToggle } from '@/components/ThemeToggle'
 import { cn } from '@/lib/utils'
 
-export type Section = 'new' | 'dashboard' | 'explorer' | 'history' | 'about'
+export type Section = 'new' | 'dashboard' | 'explorer' | 'ask' | 'history' | 'about'
 
 const NAV_ITEMS: { key: Section; label: string; icon: typeof UploadCloud }[] = [
   { key: 'new', label: 'New Analysis', icon: UploadCloud },
   { key: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { key: 'explorer', label: 'Feedback Explorer', icon: Table2 },
+  { key: 'ask', label: 'Ask Feedback', icon: MessageCircleQuestion },
   { key: 'history', label: 'History', icon: History },
   { key: 'about', label: 'About', icon: Info },
 ]
@@ -58,7 +59,7 @@ export function Sidebar({ section, onSectionChange, isOpen, onClose, hasData }: 
         <nav className="flex flex-1 flex-col gap-1 px-3">
           {NAV_ITEMS.map((item) => {
             const isActive = section === item.key
-            const showDot = hasData && (item.key === 'dashboard' || item.key === 'explorer')
+            const showDot = hasData && (item.key === 'dashboard' || item.key === 'explorer' || item.key === 'ask')
             return (
               <button
                 key={item.key}

@@ -24,6 +24,11 @@ const PIPELINE_STAGES = [
     title: 'Summarize',
     description: 'One grounded LLM call turns the Python-computed aggregates into a prioritized narrative.',
   },
+  {
+    title: 'Ask & report',
+    description:
+      'Each ticket is embedded and indexed in Postgres with pgvector — retrieval is a real SQL cosine-similarity search, not an in-memory scan. Questions are answered from the exact dashboard analytics plus the most relevant ticket excerpts — never invented. The same data renders as a downloadable PDF report on request.',
+  },
 ]
 
 const PRINCIPLES = [
@@ -95,8 +100,8 @@ export function AboutPage() {
         </CardHeader>
         <CardContent>
           <p className="text-sm text-[var(--color-ink-secondary)]">
-            FastAPI · Pydantic v2 · Pandas · OpenAI structured output · React 19 · TypeScript · Vite ·
-            Tailwind CSS · Recharts
+            FastAPI · Pydantic v2 · Pandas · OpenAI structured output & embeddings · SQLite · PostgreSQL +
+            pgvector · Matplotlib · ReportLab · React 19 · TypeScript · Vite · Tailwind CSS · Recharts
           </p>
         </CardContent>
       </Card>

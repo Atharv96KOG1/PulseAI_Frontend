@@ -57,6 +57,7 @@ export interface AnalyticsResult {
 }
 
 export interface AnalyzeResponse {
+  analysis_id: string
   validation_report: ValidationReport
   items: TicketClassification[]
   analytics: AnalyticsResult
@@ -74,4 +75,17 @@ export interface AnalysisSummary {
 export interface ApiError {
   code: number
   message: string
+}
+
+export interface RetrievedTicket {
+  ticket_id: string
+  feedback_text: string
+  primary_category: string
+  primary_theme: string
+  score: number
+}
+
+export interface QueryResponse {
+  answer: string
+  retrieved_tickets: RetrievedTicket[]
 }
