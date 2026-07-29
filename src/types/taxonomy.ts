@@ -37,6 +37,7 @@ export const CATEGORY_THEMES: Record<Category, string[]> = {
     'OTP/2FA Problem',
     'Account Locked',
     'Profile Settings Issue',
+    'Unauthorized Access',
   ],
   'Performance & Reliability': [
     'App Crash',
