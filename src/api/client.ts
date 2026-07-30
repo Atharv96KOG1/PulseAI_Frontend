@@ -1,4 +1,4 @@
-import type { AnalysisSummary, AnalyzeResponse, ApiError, QueryResponse } from '@/types/api'
+import type { AnalysisSummary, AnalyzeResponse, ApiError, QueryResponse, RangeSummaryResponse } from '@/types/api'
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:8000'
 
@@ -84,5 +84,26 @@ export async function fetchHistory(): Promise<AnalysisSummary[]> {
 export async function fetchHistoryDetail(id: string): Promise<AnalyzeResponse> {
   const response = await fetch(`${API_BASE_URL}/history/${id}`)
   if (!response.ok) throw new Error(`Could not load analysis ${id} (${response.status})`)
+  return response.json()
+}
+
+export class RangeSummaryError extends Error {
+  code: number
+
+  constructor(apiError: ApiError) {
+    super(apiError.message)
+    this.name = 'RangeSummaryError'
+    this.code = apiError.code
+  }
+}
+
+export async function fetchRangeSummary(start: string, end: string): Promise<RangeSummaryResponse> {
+  const params = new URLSearchParams({ start, end })
+  const response = await fetch(`${API_BASE_URL}/summary/range?${params}`)
+
+  if (!response.ok) {
+    throw new RangeSummaryError(await parseApiError(response))
+  }
+
   return response.json()
 }

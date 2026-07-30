@@ -72,6 +72,20 @@ export interface AnalysisSummary {
   skipped: number
 }
 
+export interface AnalysisRef {
+  analysis_id: string
+  created_at: string
+}
+
+export interface RangeSummaryResponse {
+  start: string
+  end: string
+  analyses_included: AnalysisRef[]
+  validation_report: ValidationReport
+  analytics: AnalyticsResult
+  summary: string
+}
+
 export interface ApiError {
   code: number
   message: string

@@ -1,8 +1,17 @@
-import { History, Info, LayoutDashboard, MessageCircleQuestion, Table2, UploadCloud, X } from 'lucide-react'
+import {
+  CalendarRange,
+  History,
+  Info,
+  LayoutDashboard,
+  MessageCircleQuestion,
+  Table2,
+  UploadCloud,
+  X,
+} from 'lucide-react'
 import { ThemeToggle } from '@/components/ThemeToggle'
 import { cn } from '@/lib/utils'
 
-export type Section = 'new' | 'dashboard' | 'explorer' | 'ask' | 'history' | 'about'
+export type Section = 'new' | 'dashboard' | 'explorer' | 'ask' | 'history' | 'range' | 'about'
 
 const NAV_ITEMS: { key: Section; label: string; icon: typeof UploadCloud }[] = [
   { key: 'new', label: 'New Analysis', icon: UploadCloud },
@@ -10,6 +19,7 @@ const NAV_ITEMS: { key: Section; label: string; icon: typeof UploadCloud }[] = [
   { key: 'explorer', label: 'Feedback Explorer', icon: Table2 },
   { key: 'ask', label: 'Ask Feedback', icon: MessageCircleQuestion },
   { key: 'history', label: 'History', icon: History },
+  { key: 'range', label: 'Combine by Date', icon: CalendarRange },
   { key: 'about', label: 'About', icon: Info },
 ]
 

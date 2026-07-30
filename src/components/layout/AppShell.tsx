@@ -9,6 +9,7 @@ import { DashboardPage } from '@/pages/DashboardPage'
 import { ExplorerPage } from '@/pages/ExplorerPage'
 import { HistoryPage } from '@/pages/HistoryPage'
 import { NewAnalysisPage } from '@/pages/NewAnalysisPage'
+import { RangePage } from '@/pages/RangePage'
 import { Sidebar, type Section } from './Sidebar'
 
 const PAGE_META: Record<Section, { title: string; description: string }> = {
@@ -17,6 +18,7 @@ const PAGE_META: Record<Section, { title: string; description: string }> = {
   explorer: { title: 'Feedback Explorer', description: 'Search, filter, and inspect every processed ticket.' },
   ask: { title: 'Ask Feedback', description: 'Ask questions about this batch, answered from the tickets themselves.' },
   history: { title: 'History', description: 'Every past analysis, saved automatically.' },
+  range: { title: 'Combine by Date', description: 'Merge every analysis in a date range into one summary.' },
   about: { title: 'About Loom', description: 'How the pipeline works, end to end.' },
 }
 
@@ -103,6 +105,7 @@ export function AppShell() {
               onGoToNewAnalysis={() => setSection('new')}
             />
           )}
+          {section === 'range' && <RangePage />}
           {section === 'about' && <AboutPage />}
         </main>
       </div>
